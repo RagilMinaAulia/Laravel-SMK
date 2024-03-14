@@ -71,5 +71,4 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::group(['middleware'=>['CekLogin:manager']], function(){
         Route::resource('kategori', KategoriController::class);
     });
-
 });

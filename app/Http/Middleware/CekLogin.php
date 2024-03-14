@@ -19,6 +19,7 @@ class CekLogin
         if (!Auth::check()) {
             return redirect('admin');
         }
+        
         $user= Auth::user();
         if ($user->level==$roles) {
             return $next($request);
