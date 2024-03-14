@@ -29,6 +29,7 @@ class KategoriController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    //nambah data
     public function store(Request $request)
     {
         $data= $request->validate([
@@ -37,12 +38,13 @@ class KategoriController extends Controller
         Kategori::create([
             'kategori'=>$data['kategori']
         ]);
-        return redirect();
+        return redirect('admin/kategori');
     }
 
     /**
      * Display the specified resource.
      */
+    //hapus
     public function show($idkategori)
     {
         Kategori::where('idkategori', '=', $idkategori)->delete();
@@ -52,6 +54,7 @@ class KategoriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    //update
     public function edit($idkategori)
     {
         $kategori= Kategori::where('idkategori', $idkategori)->first();
