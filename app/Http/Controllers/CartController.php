@@ -104,6 +104,7 @@ class CartController extends Controller
             'total'=>$total,
             'bayar'=>0,
             'kembali'=>0,
+            'status'=>0,
         ];
         Order::create($data);
         return redirect('logout');
