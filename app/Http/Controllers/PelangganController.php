@@ -13,7 +13,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggans= Pelanggan::paginate(1);
+        return view('backend.pelanggan.select', ['pelanggans'=>$pelanggans]);
     }
 
     /**
@@ -29,15 +30,23 @@ class PelangganController extends Controller
      */
     public function store(StorePelangganRequest $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pelanggan $pelanggan)
+    public function show($idpelanggan)
     {
-        //
+        $pelanggan= Pelanggan::where('idpelanggan', $idpelanggan)->first();
+        if ($pelanggan->aktif==0) {
+            $status= 1;
+        }else {
+            $status= 0;
+        }
+
+        Pelanggan::where('idpelanggan', $idpelanggan)->update(['aktif'=>$status]);
+        return redirect('admin/pelanggan');
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use App\Models\Menu;
 use App\Models\Order;
+use App\Models\Pelanggan;
+use App\Models\orderDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
@@ -10,8 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\OrderDetailController;
-use App\Models\orderDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +79,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
         Route::resource('menu', MenuController::class);
         Route::resource('order', OrderController::class);
         Route::resource('orderdetail', OrderDetailController::class);
+        Route::resource('pelanggan', PelangganController::class);
         Route::get('select', [MenuController::class, 'select']);
         Route::post('postmenu/{id}', [MenuController::class, 'update']);
     });
